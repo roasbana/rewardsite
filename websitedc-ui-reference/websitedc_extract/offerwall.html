@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose an offer</title>
+<style>
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #06122e;
+    color: #fff;
+    padding: 24px;
+  }
+  h1 { font-size: 20px; margin-bottom: 4px; }
+  p.sub { color: #9fb0d0; font-size: 14px; margin-bottom: 20px; }
+  #offerwall {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 480px;
+  }
+  #offerwall a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #101d40;
+    border: 1px solid #24365f;
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  #offerwall a:hover { border-color: #4a6fd0; }
+  #offerwall img { border-radius: 8px; }
+  #offerwall b { flex: 1; }
+</style>
+</head>
+<body>
+
+<h1>Complete an offer to claim your reward</h1>
+<p class="sub">Pick any offer below. Your reward is credited once it's confirmed complete.</p>
+
+<div id="offerwall"></div>
+<script>
+fetch("https://walltrks.com/ow/6a920e31e3f6416cc243c8aa?format=json")
+  .then(function (r) { return r.json(); })
+  .then(function (data) {
+    document.getElementById("offerwall").innerHTML = data.offers.map(function (o) {
+      return '<a href="' + o.url + '" target="_blank" rel="noopener">'
+           + (o.picture ? '<img src="' + o.picture + '" width="44" height="44">' : '')
+           + '<b>' + o.name + '</b> ' + (o.displayPayout || '$' + o.payout)
+           + '</a>';
+    }).join('');
+  });
+</script>
+
+</body>
+</html>
