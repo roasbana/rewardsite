@@ -1,7 +1,7 @@
 // Modifiez uniquement ces deux URLs pour changer les destinations finales.
 window.BLOXGIFTS_CONFIG = Object.freeze({
-  nitroRedirectUrl: "https://lockerpreview.com/cl/i/34l387",
-  robuxRedirectUrl: "https://lockerpreview.com/cl/i/qn6447"
+  nitroRedirectUrl: "offerwall.html?reward=nitro",
+  robuxRedirectUrl: "offerwall.html?reward=robux"
 });
 
 // nitrorewards.xyz est statique sur IIS : son endpoint Roblox est servi par
